@@ -33,5 +33,10 @@ class UrlController extends Controller
         }
     }
 
+    public function getStatistics()
+    {
+        return view('welcome');
+    }
+
 
 }
