@@ -13,3 +13,9 @@
 form{
   width: 50%;
 }
+.failed{
+  color: red;
+}
+.success{
+    color: green;
+}

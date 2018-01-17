@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/{alias}', 'UrlController@redirectUrl');
+
 Route::post('/api/shorten-url', 'UrlController@shortenUrl');
