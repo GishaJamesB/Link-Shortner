@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shorten;
 use App\ShortUrl;
+use App\Stat;
+use Jenssegers\Agent\Agent;
+use DB;
 
 class UrlController extends Controller
 {
@@ -26,6 +29,13 @@ class UrlController extends Controller
     {
         $existing = ShortUrl::where('short_code', $alias)->first();
         if($existing){
+            $agent = new Agent();
+            $stats = new Stat();
+            $stats->link_id = $existing->id;
+            $stats->device = $agent->device();
+            $stats->platform = $agent->platform();
+            $stats->browser = $agent->browser();
+            $stats->save();
             return redirect()->away($existing->long_url);
         }
         else{
@@ -33,9 +43,27 @@ class UrlController extends Controller
         }
     }
 
+    public function viewStatistics()
+    {
+
+        return view('stats');
+    }
+
     public function getStatistics()
     {
-        return view('welcome');
+        $urls = ShortUrl::all();
+        $info = array();
+        foreach($urls as $url)
+        {
+            $id = $url->id;
+            $data['visitor_count'] = Stat::where('link_id', $id)->get()->count();
+            $data['chrome_count'] = Stat::where(['link_id' => $id, 'browser' => 'Chrome'])->get()->count();
+            $data['safari_count'] = Stat::where(['link_id' => $id, 'browser' => 'Safari'])->get()->count();
+            $data['url'] = $url->long_url;
+            $data['short_code'] = url($url->short_code);
+            array_push($info, $data);
+        }
+        return response()->json($info);
     }
 
 

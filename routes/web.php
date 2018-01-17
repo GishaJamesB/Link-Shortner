@@ -19,5 +19,7 @@ Route::get('/', function () {
 
 Route::post('/api/shorten-url', 'UrlController@shortenUrl');
 
-Route::get('/stats', 'UrlController@getStatistics');
+Route::get('/stats', 'UrlController@viewStatistics');
+Route::get('/api/stats', 'UrlController@getStatistics');
 Route::get('/{alias}', 'UrlController@redirectUrl');
+
