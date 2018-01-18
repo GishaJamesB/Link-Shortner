@@ -11,6 +11,6 @@
 ```
 git clone https://github.com/GishaJamesB/Link-Shortner.git link-shortner
 cd link-shortner
-composer install
+php composer install
 php artisan serve --port=4555
 ```
