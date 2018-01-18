@@ -22,7 +22,7 @@ class Shorten
                 $data->long_url = $url;
                 $data->short_code = base_convert(uniqid(),10,36);
                 $data->save();
-                return ['msg' => $data->short_code, 'status' => "success"];
+                return ['msg' => url($data->short_code), 'status' => "success"];
             }
         }
     }

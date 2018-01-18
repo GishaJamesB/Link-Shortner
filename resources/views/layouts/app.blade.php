@@ -12,9 +12,8 @@
         <div>
             <div>
                 <nav class="navbar navbar-inverse" role="navigation">
-                     <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
-                    <li><a href="/stats">Stats</a></li>
+                    <ul class="nav navbar-nav">
+                        @yield('menu_items')
                   </ul>
                 </nav>
             </div>

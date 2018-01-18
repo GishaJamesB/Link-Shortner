@@ -1,4 +1,10 @@
 @extends('layouts.app')
+@section('menu_items')
+    <li class="active">
+        <a href="/">Home<span class="sr-only">(current)</span></a>
+    </li>
+    <li><a href="/stats">Stats</a></li>
+@endsection
 @section('content')
     <div ng-controller="HomeController">
         <form class="form-horizontal" role="form" method="post">
