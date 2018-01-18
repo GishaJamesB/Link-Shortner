@@ -22,3 +22,8 @@ If you are using local database, you have to run the following command in the pr
 ```
 php artisan migrate
 ```
+
+### Screenshots
+![Home page](https://github.com/GishaJamesB/Link-Shortner/blob/master/screenshots/link-submission-page.png)
+![Link submission Output](https://github.com/GishaJamesB/Link-Shortner/blob/master/screenshots/shortened-url.png)
+![Statistics page](https://github.com/GishaJamesB/Link-Shortner/blob/master/screenshots/statistics.png)
