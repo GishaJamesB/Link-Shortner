@@ -53,6 +53,7 @@ class UrlController extends Controller
     {
         $urls = ShortUrl::all();
         $info = array();
+        // To do: Refactor: Need to query the database only once and get the counts
         foreach($urls as $url)
         {
             $id = $url->id;
