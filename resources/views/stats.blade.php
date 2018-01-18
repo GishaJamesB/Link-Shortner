@@ -20,7 +20,7 @@
                 <tr ng-repeat="item in data">
                     <td><% item.url %></td>
                     <td><% item.visitor_count %></td>
-                    <td><% item.short_code %></td>
+                    <td><a href="<% item.short_code %>" target="_blank"><% item.short_code %></a></td>
                     <td><% item.chrome_count %></td>
                     <td><% item.safari_count %></td>
                 </tr>
