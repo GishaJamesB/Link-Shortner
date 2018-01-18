@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use App\Shorten;
+use App\ShortUrl;
 
 class ShortenTest extends TestCase
 {
@@ -17,9 +17,15 @@ class ShortenTest extends TestCase
      */
     public function testShorten()
     {
-        echo base_convert(uniqid(),10,36);
-        echo "----";
-        echo base_convert(uniqid(),20,36);
+        // echo base_convert(uniqid(),10,36);
+        // echo "----";
+        // echo base_convert(uniqid(),20,36);
+        $short_code = '2knqtt5';
+        while(count(ShortUrl::where('short_code', $short_code)->get(['short_code'])) >0 )
+            {
+                $short_code = base_convert(uniqid(),10,36);
+            }
+        echo $short_code;
         $this->assertTrue(true);
     }
 }

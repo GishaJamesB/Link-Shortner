@@ -18,10 +18,10 @@ class Shorten
                 return ['msg' => url($existing->short_code), 'status' => "success"];
             }
             else{
+                $short_code = $this->getShortCode();
                 $data = new ShortUrl();
                 $data->long_url = $url;
-                // To do: Logic here is wrong. Need to find a better method to generate unique short code. validate the short code before inserting.
-                $data->short_code = base_convert(uniqid(),10,36);
+                $data->short_code = $short_code;
                 $data->save();
                 return ['msg' => url($data->short_code), 'status' => "success"];
             }
@@ -40,6 +40,16 @@ class Shorten
         }catch(\GuzzleHttp\Exception\ConnectException $e){
             return false;
         }
+    }
+
+    protected function getShortCode()
+    {
+        $short_code = base_convert(uniqid(),10,36);
+        while(count(ShortUrl::where('short_code', $short_code)->get(['short_code'])) >0 )
+        {
+            $short_code = base_convert(uniqid(),10,36);
+        }
+        return $short_code;
     }
 
 }
