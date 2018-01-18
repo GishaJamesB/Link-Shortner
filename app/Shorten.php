@@ -20,6 +20,7 @@ class Shorten
             else{
                 $data = new ShortUrl();
                 $data->long_url = $url;
+                // To do: Logic here is wrong. Need to find a better method to generate unique short code. validate the short code before inserting.
                 $data->short_code = base_convert(uniqid(),10,36);
                 $data->save();
                 return ['msg' => url($data->short_code), 'status' => "success"];
