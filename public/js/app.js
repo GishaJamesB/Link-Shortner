@@ -60,8 +60,10 @@ ufApp.controller('HomeController', ['$scope', 'Data',  function($scope, Data) {
 }]);
 
 ufApp.controller('StatsController', ['$scope', 'Data',  function($scope, Data) {
+    $scope.loading = true
     Data.get('/api/stats').then(function (result) {
         $scope.data = result.data
+        $scope.loading = false
     })
 
 }]);
