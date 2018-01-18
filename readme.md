@@ -14,3 +14,11 @@ cd link-shortner
 php composer install
 php artisan serve --port=4555
 ```
+
+If you can create a local database, the database connection will be faster. To use local database please update .env file with the correct credentials. The current free plan seems to be very slow.
+
+If you are using local database, you have to run the following command in the project directory.
+
+```
+php artisan migrate
+```
