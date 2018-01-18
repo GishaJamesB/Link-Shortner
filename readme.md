@@ -23,6 +23,13 @@ If you are using local database, you have to run the following command in the pr
 php artisan migrate
 ```
 
+End point to get the stats;
+
+```
+http://localhost:4555/api/stats
+
+```
+
 ### Screenshots
 ![Home page](https://github.com/GishaJamesB/Link-Shortner/blob/master/screenshots/link-submission-page.png)
 ![Link submission Output](https://github.com/GishaJamesB/Link-Shortner/blob/master/screenshots/shortened-url.png)
